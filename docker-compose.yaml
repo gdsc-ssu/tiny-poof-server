@@ -8,5 +8,6 @@ services:
       - 8080
     ports:
       - 8080:8080
+    command: tail -f /dev/null
 
 
