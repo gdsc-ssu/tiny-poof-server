@@ -23,10 +23,42 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'com.mysql:mysql-connector-j'
     annotationProcessor 'org.projectlombok:lombok'
+    // gemini
+    implementation platform('com.google.cloud:libraries-bom:26.29.0')
+    implementation 'com.google.cloud:google-cloud-vertexai:0.1.0'
+    implementation 'com.google.code.gson:gson:2.9.0'
+    // 나만의 환경변수 생성
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    //rest template 4.5.2에서 4.5.9로 업그레이드
+    implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.9'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // file upload
+
+    implementation 'commons-io:commons-io:2.11.0'    /* Apache commons-io */
+    implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4' /* Apache Commons FileUpload */
+
+    // apache client
+    implementation("org.apache.httpcomponents.client5:httpclient5")
+
+    //jwt
+    implementation 'com.nimbusds:nimbus-jose-jwt:2.10.1'
+    implementation 'org.bouncycastle:bcprov-jdk15on:1.68'
+
+    //인코딩
+    implementation 'commons-codec:commons-codec:1.15'
+
+    //spring cloud
+    implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+    // swagger
+    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+    implementation "io.springfox:springfox-swagger-ui:3.0.0"
+
+
 }
 
 tasks.named('test') {
