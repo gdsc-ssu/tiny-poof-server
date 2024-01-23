@@ -124,7 +124,7 @@ public class GoogleOauthService {
                 .replace("-----BEGIN PRIVATE KEY-----", "")
                 .replace("-----END PRIVATE KEY-----", "")
                 .replaceAll("\\s", "");
-        byte[] privateKeyBytes = Base64.getDecoder().decode(privateKeyStr);
+        byte[] privateKeyBytes = Base64.getDecoder().decode(privateKeyStr.getBytes(StandardCharsets.UTF_8));
         PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(privateKeyBytes);
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
         PrivateKey privateKey = keyFactory.generatePrivate(keySpec);
