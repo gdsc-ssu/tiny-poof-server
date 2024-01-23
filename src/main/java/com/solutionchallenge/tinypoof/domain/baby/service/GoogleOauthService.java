@@ -63,7 +63,7 @@ public class GoogleOauthService {
 
     static {
         HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory();
-        factory.setConnectTimeout(5000);
+        factory.setConnectTimeout(50000);
 
         restTemplate = new RestTemplate(factory);
         restTemplate.getMessageConverters().add(0, new StringHttpMessageConverter(StandardCharsets.UTF_8));

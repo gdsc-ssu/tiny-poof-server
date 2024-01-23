@@ -2,11 +2,13 @@ package com.solutionchallenge.tinypoof.domain.baby.entity;
 
 
 import com.solutionchallenge.tinypoof.global.utils.BaseEntity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+
 import lombok.NoArgsConstructor;
 
-import static jakarta.persistence.GenerationType.IDENTITY;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import static javax.persistence.GenerationType.IDENTITY;
 import static lombok.AccessLevel.PROTECTED;
 
 @NoArgsConstructor(access = PROTECTED)

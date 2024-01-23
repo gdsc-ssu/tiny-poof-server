@@ -1,10 +1,10 @@
 steps:
   # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/tinypoof/tpoof:$COMMIT_SHA', '.']
+    args: ['build', '-t', 'gcr.io/tinypoof/tpoof', '.']
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/tinypoof/tpoof:$COMMIT_SHA']
+    args: ['push', 'gcr.io/tinypoof/tpoof']
   # Deploy container image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
@@ -13,7 +13,7 @@ steps:
       - 'deploy'
       - 'tpoof'
       - '--image'
-      - 'gcr.io/tinypoof/tpoof:$COMMIT_SHA'
+      - 'gcr.io/tinypoof/tpoof'
       - '--region'
       - 'asia-northeast3'
 images:
