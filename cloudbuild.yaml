@@ -11,4 +11,3 @@ steps:
     args: ['run', 'deploy', 'tpoof', '--image', 'gcr.io/tinypoof/tpoofr', '--region', 'asia-northeast3', '--platform', 'managed', '--allow-unauthenticated']
 images:
   - gcr.io/tinypoof/tpoof
-# [END cloudbuild_run_example_builddeploy]
