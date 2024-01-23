@@ -8,6 +8,7 @@ import com.solutionchallenge.tinypoof.domain.baby.service.BabyPoofService;
 import com.solutionchallenge.tinypoof.domain.baby.service.BabyService;
 
 import com.solutionchallenge.tinypoof.domain.baby.service.GoogleOauthService;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +28,9 @@ public class BabyController {
 
     private final GoogleOauthService googleOauthService;
 
+    @ApiOperation(
+            value = "아기 똥 촬영"
+           )
     @PostMapping("/poof")
     public ResponseEntity<PostBabyPoofRes> postBabyPoof( @RequestPart("file") MultipartFile multipartFile, @RequestPart("id") Long id) throws Exception {
 
@@ -34,6 +38,9 @@ public class BabyController {
         return ResponseEntity.ok(postBabyPoofRes);
     }
 
+    @ApiOperation(
+            value = "아기 정보 입력"
+    )
     @PostMapping("/info")
     public ResponseEntity<GetBabyInfoRes> postBabyInfo(@RequestBody PostBabyInfoReq postBabyInfoReq){
 
@@ -43,6 +50,10 @@ public class BabyController {
 
     }
 
+    @ApiOperation(
+            value = "유저 Id로 아기정보 찾기"
+    )
+
     @GetMapping("/info/{babyId}")
     public ResponseEntity<GetBabyInfoRes> getBabyInfo(@PathVariable("babyId")Long babyId){
 
@@ -51,6 +62,10 @@ public class BabyController {
         return ResponseEntity.ok().body(getBabyInfoRes);
 
     }
+
+    @ApiOperation(
+            value = "다이어리 쓰기"
+    )
 
     @PostMapping("/diary")
     public ResponseEntity<GetBabyDiaryRes> postBabyDiary(@RequestPart("file") MultipartFile multipartFile, @RequestPart("id") Long id, @RequestPart("story") String story) throws IOException {
@@ -62,6 +77,9 @@ public class BabyController {
     }
 
 
+    @ApiOperation(
+            value = "모든 다이어리 조회"
+    )
     @GetMapping("/diary")
     public ResponseEntity<List<GetBabyDiaryRes>> getBabyDiaryAll(){
         List<GetBabyDiaryRes> getBabyDiaryResList = babyService.getBabyDiaryAll();
@@ -69,6 +87,10 @@ public class BabyController {
         return ResponseEntity.ok().body(getBabyDiaryResList);
 
     }
+
+    @ApiOperation(
+            value = "diary Id로 다이어리 한개 조회"
+    )
     @GetMapping("/diary/{diaryId}")
     public ResponseEntity<GetBabyDiaryRes> getBabyDiary(@PathVariable("diaryId")Long diaryId){
 
